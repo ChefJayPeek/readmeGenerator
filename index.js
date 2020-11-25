@@ -72,16 +72,53 @@ var questions = [
 // Ask questions and return answers
 inquirer.prompt(questions).then((answers) => {
     // Get title and Write the README.MD with the title.
-    const title = `${answers.projectTitle}`;
-    // console.log(title);
-    fs.writeFile('README.MD', '### Title: ' + title + "\n", (err) =>
-    err ? console.log(err) : console.log('Success!')
-    );
+    // Write badge logo and table of contents.
     // Get license information and set badge
-    const license = `${answers.license}`
-    // Write badge logo and table of contents to file using fs append method.
+    const title = `${answers.projectTitle}`;
+    const license = `${answers.license}`;
+    const description = `${answers.projectDescription}`;
+    const installation = `${answers.projectInstallation}`;
+    const usage = `${answers.projectUsage}`;
+    const tests = `${answers.tests}`;
+    const contributing = `${answers.contribution}`;
+    const email = `${answers.userEmail}`;
+    const github = `${answers.userName}`;
+
     const badge = setBadge(license);
-    fs.appendFile('README.MD', badge + '\n### Table of contents\n###Description\n###Installation\n###Usage\n###Liscense\n###Contributing\n###Tests\n###Questions\n', (err) =>
+    // console.log(title);
+    fs.writeFile('README.MD', `### Title: ${title}
+    ${badge}
+    ### Table of contents
+    ### Description
+    ### Installation
+    ### Usage
+    ### License
+    ### Contributing
+    ### Tests
+    ### Questions
+    
+    ## Description
+    ${description}
+
+    ## Installation
+    ${installation}
+
+    ## Usage
+    ${usage}
+
+    ## License
+    ${license}
+
+    ## Contributing
+    ${contributing}
+
+    ## Tests
+    ${tests}
+
+    ## Questions
+    Email address: ${email}
+    GitHub link: ${github}
+    `, (err) =>
     err ? console.log(err) : console.log('Success!')
     );
 });
