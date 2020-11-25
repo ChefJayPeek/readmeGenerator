@@ -79,7 +79,7 @@ inquirer.prompt(questions).then((answers) => {
     const description = `${answers.projectDescription}`;
     const installation = `${answers.projectInstallation}`;
     const usage = `${answers.projectUsage}`;
-    const tests = `${answers.tests}`;
+    const tests = `${answers.test}`;
     const contributing = `${answers.contribution}`;
     const email = `${answers.userEmail}`;
     const github = `${answers.userName}`;
@@ -118,6 +118,9 @@ inquirer.prompt(questions).then((answers) => {
     ## Questions
     Email address: ${email}
     GitHub link: ${github}
+
+    README.MD Generated using Readme Generator:
+    https://github.com/ChefJayPeek/readmeGenerator
     `, (err) =>
     err ? console.log(err) : console.log('Success!')
     );
